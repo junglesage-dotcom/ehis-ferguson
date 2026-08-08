@@ -1,14 +1,125 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+
+const stats = [
+  { value: '120+', label: 'Extension Officers Trained' },
+  { value: '8', label: 'Research Publications' },
+  { value: '3', label: 'Agribusiness Systems Deployed' },
+  { value: '5+', label: 'Years Data & Research Experience' },
+];
+
+const pillars = [
+  {
+    title: 'Data & Predictive Systems',
+    description: 'Supply chain modeling, BI dashboards, geospatial analytics.',
+  },
+  {
+    title: 'Research & Policy',
+    description: 'M&E design, academic supervision, policy briefs.',
+  },
+  {
+    title: 'Agribusiness & AgroTech',
+    description: 'Precision agriculture, farm analytics, value chain optimization.',
+  },
+];
 ---
 
 <MainLayout>
-  <div class="max-w-content mx-auto px-6 py-24">
-    <h1 class="text-4xl font-display font-semibold text-navy-900">
-      Home page — coming next
-    </h1>
-    <p class="text-navy-900/70 mt-4">
-      This is a placeholder. We'll build the real hero, stats band, and expertise preview next.
+
+  <!-- HERO -->
+  <section class="max-w-content mx-auto px-6 py-24 md:py-32 text-center">
+    <p class="text-sm uppercase tracking-wide text-emerald-600 font-medium mb-4">
+      Ehis Ferguson
     </p>
-  </div>
+    <h1 class="text-4xl md:text-6xl font-display font-semibold text-navy-900 leading-tight">
+      Data Scientist · Research Consultant · Agribusiness Strategist
+    </h1>
+    <p class="text-lg text-navy-900/70 mt-6 max-w-2xl mx-auto">
+      Turning agricultural and educational data into evidence-based decisions.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+      <a
+        href="/contact"
+        class="bg-emerald-500 hover:bg-emerald-700 text-white font-medium px-6 py-3 rounded transition-colors"
+      >
+        Start a Project
+      </a>
+      <a
+        href="/portfolio"
+        class="border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white font-medium px-6 py-3 rounded transition-colors"
+      >
+        View Case Studies
+      </a>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF STATS -->
+  <section class="bg-navy-900 py-16">
+    <div class="max-w-content mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {stats.map((stat) => (
+        <div>
+          <p class="text-3xl md:text-4xl font-display font-semibold text-emerald-400">
+            {stat.value}
+          </p>
+          <p class="text-sm text-white/70 mt-2">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- EXPERTISE PREVIEW -->
+  <section class="max-w-content mx-auto px-6 py-24">
+    <h2 class="text-3xl font-display font-semibold text-navy-900 text-center mb-4">
+      Core Expertise
+    </h2>
+    <p class="text-navy-900/70 text-center max-w-xl mx-auto mb-12">
+      Three pillars, one goal: evidence-based decisions that scale.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {pillars.map((pillar) => (
+        <div class="border border-navy-900/10 rounded-lg p-6 hover:border-emerald-500 transition-colors">
+          <h3 class="text-xl font-display font-semibold text-navy-900 mb-2">
+            {pillar.title}
+          </h3>
+          <p class="text-navy-900/70 text-sm">{pillar.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="/expertise" class="text-emerald-600 hover:text-emerald-700 font-medium text-sm">
+        View full expertise →
+      </a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="bg-slate-100 py-20">
+    <div class="max-w-content mx-auto px-6 text-center max-w-xl">
+      <h2 class="text-2xl font-display font-semibold text-navy-900 mb-2">
+        Research Notes & Field Insights
+      </h2>
+      <p class="text-navy-900/70 text-sm mb-6">
+        Monthly analysis on data, agriculture, and education policy. No noise.
+      </p>
+
+      <form class="flex flex-col sm:flex-row gap-3 justify-center">
+        <input
+          type="email"
+          placeholder="you@email.com"
+          required
+          class="border border-navy-900/20 rounded px-4 py-3 text-sm w-full sm:w-72 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        />
+        <button
+          type="submit"
+          class="bg-emerald-500 hover:bg-emerald-700 text-white font-medium px-6 py-3 rounded transition-colors whitespace-nowrap"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
 </MainLayout>
