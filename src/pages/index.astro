@@ -1,17 +1,14 @@
 ---
-
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <div class="max-w-content mx-auto px-6 py-24">
+    <h1 class="text-4xl font-display font-semibold text-navy-900">
+      Home page — coming next
+    </h1>
+    <p class="text-navy-900/70 mt-4">
+      This is a placeholder. We'll build the real hero, stats band, and expertise preview next.
+    </p>
+  </div>
+</MainLayout>

@@ -1,0 +1,63 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/expertise', label: 'Expertise' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/research', label: 'Research' },
+  { href: '/media', label: 'Media' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="border-b border-navy-900/10 bg-white sticky top-0 z-50">
+  <nav class="max-w-content mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="font-display font-semibold text-lg text-navy-900">
+      Ehis Ferguson
+    </a>
+
+    <ul class="hidden md:flex items-center gap-6">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="text-sm text-navy-900/80 hover:text-emerald-600 transition-colors">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a href="/contact" class="hidden md:inline-block bg-emerald-500 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-2 rounded transition-colors">
+      Start a Project
+    </a>
+
+    <button id="menu-toggle" class="md:hidden text-navy-900" aria-label="Toggle menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+
+  <ul id="mobile-menu" class="hidden md:hidden flex flex-col gap-1 px-6 pb-4">
+    {navLinks.map((link) => (
+      <li>
+        <a href={link.href} class="block py-2 text-sm text-navy-900/80 hover:text-emerald-600">
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('hidden') === false;
+    menu?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

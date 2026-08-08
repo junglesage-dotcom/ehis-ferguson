@@ -1,0 +1,38 @@
+---
+const socialLinks = [
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/YOUR-HANDLE' },
+  { label: 'GitHub', href: 'https://github.com/YOUR-HANDLE' },
+  { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=YOUR-ID' },
+  { label: 'ResearchGate', href: 'https://researchgate.net/profile/YOUR-PROFILE' },
+  { label: 'ORCID', href: 'https://orcid.org/YOUR-ORCID' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-navy-900/10 bg-white mt-24">
+  <div class="max-w-content mx-auto px-6 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <div>
+      <p class="font-display font-semibold text-navy-900">Ehis Ferguson</p>
+      <p class="text-sm text-navy-900/60 mt-1">
+        Data · Education · Research · Agribusiness Technology
+      </p>
+    </div>
+
+    <ul class="flex flex-wrap gap-4">
+      {socialLinks.map((link) => (
+        <li>
+          <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-sm text-navy-900/70 hover:text-emerald-600 transition-colors">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="border-t border-navy-900/10">
+    <p class="max-w-content mx-auto px-6 py-4 text-xs text-navy-900/50">
+      © {currentYear} Ehis Ferguson. All rights reserved.
+    </p>
+  </div>
+</footer>
