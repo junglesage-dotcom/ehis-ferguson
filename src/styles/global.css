@@ -1,1 +1,36 @@
 @import "tailwindcss";
+@import "tailwindcss";
+
+@theme {
+  --color-navy-900: #0A192F;
+  --color-navy-700: #112240;
+  --color-slate-50: #F8FAFC;
+  --color-emerald-500: #10B981;
+  --color-emerald-700: #047857;
+  --color-amber-400: #FBBF24;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --breakpoint-content: 1200px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-navy-900);
+  background-color: var(--color-slate-50);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
