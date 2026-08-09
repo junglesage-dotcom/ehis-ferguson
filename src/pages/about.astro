@@ -1,0 +1,60 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const timeline = [
+  { year: '2026', event: 'Placeholder: current role or major milestone' },
+  { year: '2024', event: 'Placeholder: previous role or achievement' },
+  { year: '2021', event: 'Placeholder: earlier career milestone' },
+  { year: '2019', event: 'Placeholder: education or first major role' },
+];
+
+const education = [
+  'Placeholder: Degree, Institution, Year',
+  'Placeholder: Certification, Issuer, Year',
+];
+---
+
+<MainLayout title="About | Ehis Ferguson">
+  <section class="max-w-content mx-auto px-6 py-20">
+    <h1 class="text-4xl font-display font-semibold text-navy-900 text-center">
+      About
+    </h1>
+
+    <div class="max-w-2xl mx-auto mt-10">
+      <p class="text-navy-900/80 leading-relaxed">
+        Ehis Ferguson is a data scientist, research consultant, and agribusiness
+        strategist focused on turning complex agricultural and educational data
+        into scalable, evidence-based decisions. [Placeholder narrative — replace
+        with real 3rd-person bio once finalized.]
+      </p>
+    </div>
+
+    <!-- Education -->
+    <div class="max-w-2xl mx-auto mt-14">
+      <h2 class="text-2xl font-display font-semibold text-navy-900 mb-4">
+        Education & Certifications
+      </h2>
+      <ul class="flex flex-col gap-2">
+        {education.map((item) => (
+          <li class="text-sm text-navy-900/80">{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Timeline -->
+    <div class="max-w-2xl mx-auto mt-14">
+      <h2 class="text-2xl font-display font-semibold text-navy-900 mb-6">
+        Career Timeline
+      </h2>
+      <div class="flex flex-col gap-6 border-l-2 border-navy-900/10 pl-6">
+        {timeline.map((item) => (
+          <div class="relative">
+            <span class="absolute -left-[29px] top-1 w-3 h-3 bg-emerald-500 rounded-full"></span>
+            <p class="text-sm font-semibold text-emerald-600">{item.year}</p>
+            <p class="text-sm text-navy-900/80 mt-1">{item.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>

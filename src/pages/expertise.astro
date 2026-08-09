@@ -1,0 +1,75 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const pillars = [
+  {
+    title: 'Data & Predictive Systems',
+    capabilities: [
+      'End-to-end BI architecture',
+      'Predictive supply chain modeling',
+      'Automated reporting systems',
+      'Geospatial farm analytics',
+      'Statistical inference for policy',
+    ],
+    tools: ['Python', 'SQL', 'Power BI', 'R'],
+  },
+  {
+    title: 'Research & Education',
+    capabilities: [
+      'M&E framework design',
+      'Curriculum development for technical training',
+      'Research supervision & academic consulting',
+      'Instructional technology design',
+    ],
+    tools: ['R', 'Survey Design', 'Excel'],
+  },
+  {
+    title: 'Agribusiness Technology',
+    capabilities: [
+      'Precision agriculture strategy',
+      'IoT-driven farm monitoring',
+      'Post-harvest loss reduction systems',
+      'Agricultural value chain digitization',
+    ],
+    tools: ['GIS', 'Python', 'Excel'],
+  },
+];
+---
+
+<MainLayout title="Expertise | Ehis Ferguson">
+  <section class="max-w-content mx-auto px-6 py-20">
+    <h1 class="text-4xl font-display font-semibold text-navy-900 text-center">
+      Expertise
+    </h1>
+    <p class="text-navy-900/70 text-center max-w-xl mx-auto mt-4">
+      Capabilities that turn data into decisions — not just tools on a resume.
+    </p>
+
+    <div class="flex flex-col gap-8 mt-14">
+      {pillars.map((pillar) => (
+        <div class="border border-navy-900/10 rounded-lg p-8">
+          <h2 class="text-2xl font-display font-semibold text-navy-900 mb-5">
+            {pillar.title}
+          </h2>
+
+          <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+            {pillar.capabilities.map((capability) => (
+              <li class="flex items-start gap-2 text-sm text-navy-900/80">
+                <span class="text-emerald-500 mt-0.5">→</span>
+                {capability}
+              </li>
+            ))}
+          </ul>
+
+          <div class="flex flex-wrap gap-2 mt-6 pt-6 border-t border-navy-900/10">
+            {pillar.tools.map((tool) => (
+              <span class="text-xs bg-slate-50 border border-navy-900/10 px-2 py-1 rounded">
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</MainLayout>
