@@ -1,0 +1,114 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const caseStudies = [
+  {
+    title: 'Cassava Processing Financial Model',
+    category: 'Agriculture',
+    challenge: 'Processor lacked visibility into seasonal cash flow, leading to 40% downtime during harvest peaks.',
+    approach: [
+      'Built a Monte Carlo forecasting model integrating yield variability, price volatility, and storage costs.',
+    ],
+    results: 'Reduced off-season liquidity gaps by 65%; enabled $120K additional working capital allocation.',
+    tools: ['Python', 'Excel', 'Statistics'],
+  },
+  {
+    title: 'Extension Officer Training Dashboard',
+    category: 'Data',
+    challenge: 'Program had no way to measure training reach or effectiveness across regions.',
+    approach: [
+      'Designed a BI dashboard tracking officer performance and farmer adoption rates.',
+    ],
+    results: 'Enabled real-time tracking across 120+ trained officers; cut reporting time by 70%.',
+    tools: ['Power BI', 'SQL'],
+  },
+  {
+    title: 'M&E Framework for Agricultural Policy Pilot',
+    category: 'Research',
+    challenge: 'Pilot program lacked a structured way to evaluate outcomes against policy goals.',
+    approach: [
+      'Developed indicators and a data collection framework aligned with donor reporting standards.',
+    ],
+    results: 'Framework adopted across 3 additional pilot sites; used in 2 published research briefs.',
+    tools: ['R', 'Survey Design'],
+  },
+];
+
+const categories = ['All', 'Data', 'Research', 'Agriculture'];
+---
+
+<MainLayout title="Portfolio | Ehis Ferguson">
+  <section class="max-w-content mx-auto px-6 py-20">
+    <h1 class="text-4xl font-display font-semibold text-navy-900 text-center">
+      Case Studies
+    </h1>
+    <p class="text-navy-900/70 text-center max-w-xl mx-auto mt-4">
+      Real projects, real numbers. Every engagement measured by outcome, not effort.
+    </p>
+
+    <!-- Filter tabs -->
+    <div class="flex justify-center gap-3 mt-10 flex-wrap" id="filter-tabs">
+      {categories.map((cat) => (
+        <button
+          class="filter-btn px-4 py-2 text-sm rounded-full border border-navy-900/20 text-navy-900/70 hover:border-emerald-500 hover:text-emerald-600 transition-colors data-[active=true]:bg-emerald-500 data-[active=true]:text-white data-[active=true]:border-emerald-500"
+          data-category={cat}
+          data-active={cat === 'All' ? 'true' : 'false'}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Case study grid -->
+    <div class="grid md:grid-cols-2 gap-6 mt-12" id="case-study-grid">
+      {caseStudies.map((study) => (
+        <div class="case-study-card border border-navy-900/10 rounded-lg p-6" data-category={study.category}>
+          <span class="text-xs uppercase tracking-wide text-emerald-600 font-medium">
+            {study.category}
+          </span>
+          <h3 class="text-xl font-display font-semibold text-navy-900 mt-2 mb-4">
+            {study.title}
+          </h3>
+
+          <p class="text-sm text-navy-900/70 mb-3">
+            <span class="font-semibold text-navy-900">Challenge:</span> {study.challenge}
+          </p>
+          <p class="text-sm text-navy-900/70 mb-3">
+            <span class="font-semibold text-navy-900">Approach:</span> {study.approach.join(' ')}
+          </p>
+          <p class="text-sm text-navy-900/70 mb-4">
+            <span class="font-semibold text-navy-900">Results:</span> {study.results}
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            {study.tools.map((tool) => (
+              <span class="text-xs bg-slate-50 border border-navy-900/10 px-2 py-1 rounded">
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.case-study-card');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      buttons.forEach((b) => b.setAttribute('data-active', 'false'));
+      btn.setAttribute('data-active', 'true');
+
+      cards.forEach((card) => {
+        const cardCategory = card.getAttribute('data-category');
+        const shouldShow = category === 'All' || category === cardCategory;
+        card.classList.toggle('hidden', !shouldShow);
+      });
+    });
+  });
+</script>
