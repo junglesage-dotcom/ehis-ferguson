@@ -1,0 +1,93 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const mediaItems = [
+  {
+    category: 'Field Work',
+    title: 'Placeholder: Farm site visit, Region X',
+    link: 'https://drive.google.com/YOUR-LINK',
+  },
+  {
+    category: 'Training Sessions',
+    title: 'Placeholder: Extension officer training workshop',
+    link: 'https://youtube.com/YOUR-LINK',
+  },
+  {
+    category: 'Presentations',
+    title: 'Placeholder: Conference presentation on data systems',
+    link: 'https://drive.google.com/YOUR-LINK',
+  },
+  {
+    category: 'Workshops',
+    title: 'Placeholder: M&E framework workshop',
+    link: 'https://youtube.com/YOUR-LINK',
+  },
+];
+
+const categories = ['All', 'Field Work', 'Training Sessions', 'Presentations', 'Workshops'];
+---
+
+<MainLayout title="Media | Ehis Ferguson">
+  <section class="max-w-content mx-auto px-6 py-20">
+    <h1 class="text-4xl font-display font-semibold text-navy-900 text-center">
+      Media
+    </h1>
+    <p class="text-navy-900/70 text-center max-w-xl mx-auto mt-4">
+      Field presence, training sessions, and presentations.
+    </p>
+
+    <div class="flex justify-center gap-3 mt-10 flex-wrap" id="media-filter-tabs">
+      {categories.map((cat) => (
+        <button
+          class="media-filter-btn px-4 py-2 text-sm rounded-full border border-navy-900/20 text-navy-900/70 hover:border-emerald-500 hover:text-emerald-600 transition-colors data-[active=true]:bg-emerald-500 data-[active=true]:text-white data-[active=true]:border-emerald-500"
+          data-category={cat}
+          data-active={cat === 'All' ? 'true' : 'false'}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12" id="media-grid">
+      {mediaItems.map((item) => (
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="media-card border border-navy-900/10 rounded-lg overflow-hidden hover:border-emerald-500 transition-colors block"
+          data-category={item.category}
+        >
+          <div class="bg-slate-50 aspect-video flex items-center justify-center text-navy-900/30 text-sm">
+            Thumbnail placeholder
+          </div>
+          <div class="p-4">
+            <span class="text-xs uppercase tracking-wide text-emerald-600 font-medium">
+              {item.category}
+            </span>
+            <p class="text-sm font-medium text-navy-900 mt-1">{item.title}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.media-filter-btn');
+  const cards = document.querySelectorAll('.media-card');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      buttons.forEach((b) => b.setAttribute('data-active', 'false'));
+      btn.setAttribute('data-active', 'true');
+
+      cards.forEach((card) => {
+        const cardCategory = card.getAttribute('data-category');
+        const shouldShow = category === 'All' || category === cardCategory;
+        card.classList.toggle('hidden', !shouldShow);
+      });
+    });
+  });
+</script>

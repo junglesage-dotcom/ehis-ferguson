@@ -1,0 +1,98 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const publications = [
+  {
+    title: 'Placeholder: Predictive Modeling for Post-Harvest Loss Reduction',
+    authors: 'Ferguson, E., et al.',
+    venue: 'Placeholder Journal of Agricultural Systems, 2025',
+    abstract: 'Placeholder abstract text. Replace with the real 2-3 line summary of the publication once available.',
+    keywords: ['Agribusiness', 'Predictive Analytics', 'Supply Chain'],
+    pdfLink: 'https://drive.google.com/YOUR-LINK',
+    doi: '10.xxxx/placeholder',
+    bibtex: '@article{ferguson2025placeholder, title={Placeholder Title}, author={Ferguson, E.}, year={2025}}',
+  },
+  {
+    title: 'Placeholder: M&E Frameworks in Agricultural Extension Programs',
+    authors: 'Ferguson, E.',
+    venue: 'Placeholder Conference on Development Research, 2024',
+    abstract: 'Placeholder abstract text. Replace with the real summary once the publication is finalized.',
+    keywords: ['M&E', 'Extension Programs', 'Policy'],
+    pdfLink: 'https://drive.google.com/YOUR-LINK',
+    doi: '',
+    bibtex: '@article{ferguson2024placeholder, title={Placeholder Title}, author={Ferguson, E.}, year={2024}}',
+  },
+];
+---
+
+<MainLayout title="Research | Ehis Ferguson">
+  <section class="max-w-content mx-auto px-6 py-20">
+    <h1 class="text-4xl font-display font-semibold text-navy-900 text-center">
+      Research
+    </h1>
+    <p class="text-navy-900/70 text-center max-w-xl mx-auto mt-4">
+      Published work spanning agricultural data systems and evaluation design.
+    </p>
+
+    <div class="flex flex-col gap-6 mt-14">
+      {publications.map((pub, i) => (
+        <div class="border border-navy-900/10 rounded-lg p-6">
+          <h2 class="text-xl font-display font-semibold text-navy-900">
+            {pub.title}
+          </h2>
+          <p class="text-sm text-navy-900/60 mt-1">{pub.authors} · {pub.venue}</p>
+
+          <p class="text-sm text-navy-900/80 mt-4">{pub.abstract}</p>
+
+          <div class="flex flex-wrap gap-2 mt-4">
+            {pub.keywords.map((kw) => (
+              <span class="text-xs bg-slate-50 border border-navy-900/10 px-2 py-1 rounded">
+                {kw}
+              </span>
+            ))}
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 mt-5 pt-5 border-t border-navy-900/10">
+            <a
+              href={pub.pdfLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+            >
+              Download PDF
+            </a>
+
+            {pub.doi && (
+              <span class="text-xs text-navy-900/50">DOI: {pub.doi}</span>
+            )}
+
+            <button
+              class="copy-bibtex text-xs border border-navy-900/20 px-3 py-1.5 rounded hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              data-bibtex={pub.bibtex}
+            >
+              Copy BibTeX
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.copy-bibtex');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const bibtex = btn.getAttribute('data-bibtex');
+      if (bibtex) {
+        await navigator.clipboard.writeText(bibtex);
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.textContent = original;
+        }, 1500);
+      }
+    });
+  });
+</script>
