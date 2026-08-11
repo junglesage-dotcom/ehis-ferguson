@@ -1,0 +1,43 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<MainLayout title={`${post.data.title} | Ehis Ferguson`} description={post.data.description}>
+  <article class="max-w-2xl mx-auto px-6 py-20">
+    <a href="/blog" class="text-sm text-emerald-600 hover:text-emerald-700">← Back to Blog</a>
+
+    <div class="flex items-center gap-3 text-xs text-navy-900/50 mt-6 mb-2">
+      <span>{post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+      <span>·</span>
+      <span>{post.data.readingTime}</span>
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-display font-semibold text-navy-900 mb-6">
+      {post.data.title}
+    </h1>
+
+    <div class="flex flex-wrap gap-2 mb-8">
+      {post.data.tags.map((tag) => (
+        <span class="text-xs bg-slate-50 border border-navy-900/10 px-2 py-1 rounded">
+          {tag}
+        </span>
+      ))}
+    </div>
+
+    <div class="prose prose-navy max-w-none">
+      <Content />
+    </div>
+  </article>
+</MainLayout>
