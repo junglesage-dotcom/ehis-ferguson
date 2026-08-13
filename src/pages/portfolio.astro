@@ -93,7 +93,11 @@ const categories = ['All', 'Data', 'Research', 'Agriculture'];
   </section>
 </MainLayout>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
+  // @ts-ignore
+  const gsap = window.gsap;
+
   const buttons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.case-study-card');
 
@@ -107,7 +111,22 @@ const categories = ['All', 'Data', 'Research', 'Agriculture'];
       cards.forEach((card) => {
         const cardCategory = card.getAttribute('data-category');
         const shouldShow = category === 'All' || category === cardCategory;
-        card.classList.toggle('hidden', !shouldShow);
+
+        if (gsap) {
+          if (shouldShow) {
+            card.classList.remove('hidden');
+            gsap.fromTo(card, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3 });
+          } else {
+            gsap.to(card, {
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.2,
+              onComplete: () => card.classList.add('hidden'),
+            });
+          }
+        } else {
+          card.classList.toggle('hidden', !shouldShow);
+        }
       });
     });
   });
