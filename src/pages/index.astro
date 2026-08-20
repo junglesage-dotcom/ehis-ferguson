@@ -104,20 +104,28 @@ const pillars = [
         Monthly analysis on data, agriculture, and education policy. No noise.
       </p>
 
-      <form class="flex flex-col sm:flex-row gap-3 justify-center">
-        <input
-          type="email"
-          placeholder="you@email.com"
-          required
-          class="border border-navy-900/20 rounded px-4 py-3 text-sm w-full sm:w-72 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        />
-        <button
-          type="submit"
-          class="bg-emerald-500 hover:bg-emerald-700 text-white font-medium px-6 py-3 rounded transition-colors whitespace-nowrap"
-        >
-          Subscribe
-        </button>
-      </form>
+      
+        <form class="flex flex-col gap-3 justify-center">
+  <div class="flex flex-col sm:flex-row gap-3 justify-center">
+    <input
+      type="email"
+      placeholder="you@email.com"
+      required
+      class="border border-navy-900/20 rounded px-4 py-3 text-sm w-full sm:w-72 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+    />
+    <button
+      type="submit"
+      class="bg-emerald-500 hover:bg-emerald-700 text-white font-medium px-6 py-3 rounded transition-colors whitespace-nowrap"
+    >
+      Subscribe
+    </button>
+  </div>
+  <label class="flex items-center gap-2 justify-center text-xs text-navy-900/60">
+    <input type="checkbox" required class="rounded" />
+    I agree to receive research updates. See
+    <a href="/privacy" class="text-emerald-600 hover:text-emerald-700">Privacy Policy</a>.
+  </label>
+</form>
     </div>
   </section>
 

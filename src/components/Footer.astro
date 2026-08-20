@@ -31,8 +31,10 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <div class="border-t border-navy-900/10">
-    <p class="max-w-content mx-auto px-6 py-4 text-xs text-navy-900/50">
-      © {currentYear} Ehis Ferguson. All rights reserved.
+    <p class="max-w-content mx-auto px-6 py-4 text-xs text-navy-900/50 flex flex-wrap gap-x-4">
+  <span>© {currentYear} Ehis Ferguson. All rights reserved.</span>
+  <a href="/privacy" class="hover:text-emerald-600 transition-colors">Privacy Policy</a>
+  <a href="/terms" class="hover:text-emerald-600 transition-colors">Terms of Service</a>
     </p>
   </div>
 </footer>

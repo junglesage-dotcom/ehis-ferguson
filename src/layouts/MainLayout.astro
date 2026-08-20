@@ -48,5 +48,38 @@ const {
 
       revealElements.forEach((el) => observer.observe(el));
     </script>
+        <div
+      id="cookie-banner"
+      class="fixed bottom-0 left-0 right-0 bg-navy-900 text-white p-4 hidden z-50"
+    >
+      <div class="max-w-content mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-white/80">
+          This site uses minimal, privacy-first analytics and cookies for
+          essential functionality only. See our
+          <a href="/privacy" class="underline hover:text-emerald-400">Privacy Policy</a>.
+        </p>
+        <button
+          id="cookie-accept"
+          class="bg-emerald-500 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-2 rounded whitespace-nowrap transition-colors"
+        >
+          Got it
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const banner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('cookie-accept');
+      const consentKey = 'cookie-consent';
+
+      if (banner && !localStorage.getItem(consentKey)) {
+        banner.classList.remove('hidden');
+      }
+
+      acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'true');
+        banner?.classList.add('hidden');
+      });
+    </script>
   </body>
 </html>
